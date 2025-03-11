@@ -19,7 +19,7 @@ def toTime(time):
 class usaswimming:
 	gender_ids = {'Women': 'Female', 'Men': 'Male'}
 	gender_ids_out = {v:k for k,v in gender_ids.items()}
-
+	ages = range(7, 19)
 	event_ids = {
 		"50 Free": "50 FR SCY",
 		"100 Free": "100 FR SCY",
@@ -56,7 +56,7 @@ class usaswimming:
 	season_ids = {2025: '2024-2025', 2024: '2023-2024', 2023: '2022-2023', 2022: '2021-2022', 2021: '2020-201', 2020: '2019-2020'}
 	season_ids_out = {v:k for k,v in season_ids.items()}
 
-	with open('scrapers/conferences.json') as f:
+	with open('usaswimming_requests/conferences.json') as f:
 		conferences = json.load(f)
 	
 	def __init__(self):
@@ -98,11 +98,12 @@ class usaswimming:
 		#print(response.json())
 		return int(response.json()['requestId'])
 
-	def get_filter(self, dim, value):
-		if dim == '[OrgUnit.Division]':
-			filter = {'equals': value}
-		else:
+	def get_filter(self, dim, value, multi_select=True):
+		if multi_select:
 			filter = {'members': [value]}
+		else:
+			filter = {'equals': value}
+
 		return {
 			"jaql": {
 				"title": "TypeName",
@@ -113,21 +114,38 @@ class usaswimming:
 			"panel": "scope"
 		}
 
-	def get_usaswimming_times(self):
-		#https://data.usaswimming.org/datahub/usas/timeseventrank
+	def get_usaswimming_times(self, event="100 FR SCY", gender='Male', age=12):
+		headers = {'Authorization': f'Bearer {self.token}'}
 		baseURL = 'https://usaswimming.sisense.com/api/datasources/USA%20Swimming%20Times%20Elasticube/jaql?trc=sdk-ui-1.23.0'
+		with open('usaswimming_requests/event_rank.json') as f:
+			request_json = json.load(f)
+
+
+
+		request_json['metadata'].append(self.get_filter('[PublicAgeGroup.AgeGroupDesc]', str(age), multi_select=True))
+		request_json['metadata'].append(self.get_filter('[SwimEvent.EventCode]', event))
+		request_json['metadata'].append(self.get_filter('[EventCompetitionCategory.TypeName]', gender))
+		#request_json['metadata'].append(self.get_filter('[SeasonCalendar.SeasonYearDesc]', season))
+		print(request_json)
+		session = requests.Session()
+		response = session.post(baseURL, json=request_json, headers=headers)
+		swims = response.json()['values']
+		for swim in swims:
+			pass
+			#print(swim)
+		print(len(swims))
 
 	def get_ncaa_times(self, season='2024-2025', div='NCAA Div I', event="100 FR SCY", gender="Male", conf="Pacific 12"):
 		print(season, div, gender, event, conf)
 		headers = {'Authorization': f'Bearer {self.token}'}
 		baseURL = "https://usaswimming.sisense.com/api/datasources/NCAA%20Times/jaql?trc=sdk-ui-1.11.0"
 
-		with open('scrapers/event_rank.json') as f:
+		with open('usaswimming_requests/event_rank_ncaa.json') as f:
 			request_json = json.load(f)
 
 		# append filters to base JSON
 		request_json['metadata'].append(self.get_filter('[SeasonCalendar.NCAASeason]', season))
-		request_json['metadata'].append(self.get_filter('[OrgUnit.Division]', div))
+		request_json['metadata'].append(self.get_filter('[OrgUnit.Division]', div, multi_select=False))
 		request_json['metadata'].append(self.get_filter('[SwimEvent.EventCode]', event))
 		request_json['metadata'].append(self.get_filter('[EventCompetitionCategory.TypeName]', gender))
 		request_json['metadata'].append(self.get_filter('[OrgUnit.ConferenceName]', conf))
@@ -210,11 +228,21 @@ def main(season=2025):
 			for event in usaswimming.event_ids_out:
 				for conference in usaswimming.conferences[division]:
 					swim_connection.get_ncaa_times(season=season, div=division, gender=gender, event=event, conf=conference)
-	
+
+def loop_club_times():
+	swim_connection = usaswimming()
+	swim_connection.get_usaswimming_times(gender='Female', event='100 FR SCY', age=12)
+	return
+
+	for gender in usaswimming.gender_ids_out:
+		for event in usaswimming.event_ids_out:
+			for age in usaswimming.ages:
+				swim_connection.get_usaswimming_times(gender=gender, event=event, age=age)
+
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument('-s', '--season', help='season to use. Default current', type=int, default=2025)
 	args = parser.parse_args()
 	
-	main(season=args.season)
-
+	#main(season=args.season)
+	loop_club_times()
