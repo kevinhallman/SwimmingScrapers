@@ -1,10 +1,10 @@
 import requests, json, re, argparse
 from datetime import datetime
-from bin.models.clubdb import getdb
-from bin.models.swimstaging import Swimstaging
+#from bin.models.clubdb import getdb
+#from bin.models.swimstaging import Swimstaging
 import hashlib
 
-db = getdb()
+#db = getdb()
 
 # converts to apyth time in seconds
 def toTime(time):
@@ -114,9 +114,10 @@ class usaswimming:
 		}
 
 	def get_usaswimming_times(self):
+		#https://data.usaswimming.org/datahub/usas/timeseventrank
 		baseURL = 'https://usaswimming.sisense.com/api/datasources/USA%20Swimming%20Times%20Elasticube/jaql?trc=sdk-ui-1.23.0'
 
-	def c(self, season='2024-2025', div='NCAA Div I', event="100 FR SCY", gender="Male", conf="Pacific 12"):
+	def get_ncaa_times(self, season='2024-2025', div='NCAA Div I', event="100 FR SCY", gender="Male", conf="Pacific 12"):
 		print(season, div, gender, event, conf)
 		headers = {'Authorization': f'Bearer {self.token}'}
 		baseURL = "https://usaswimming.sisense.com/api/datasources/NCAA%20Times/jaql?trc=sdk-ui-1.11.0"
@@ -137,7 +138,7 @@ class usaswimming:
 		#print(request_json)
 
 		session = requests.Session()
-		response = session.post(d1baseURL, json=request_json, headers=headers)
+		response = session.post(baseURL, json=request_json, headers=headers)
 
 		division = self.division_ids_out[div]
 		genderOut = self.gender_ids_out[gender]
@@ -181,7 +182,7 @@ class usaswimming:
 							'relay': Relay, 'year': Year, 'conference': Conference, 'key': key, 'date_loaded': datetime.now()}
 		
 		print(len(swims))
-		Swimstaging.insert_many(swims.values()).on_conflict_ignore().execute()
+		#Swimstaging.insert_many(swims.values()).on_conflict_ignore().execute()
 
 def parse_conferences():
 	with open('conferences_raw.json') as f:
