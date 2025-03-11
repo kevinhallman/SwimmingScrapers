@@ -1,0 +1,232 @@
+[
+  [
+    {
+      "data": 1,
+      "text": "1"
+    },
+    {
+      "data": "50 FR SCY",
+      "text": "50 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 2,
+      "text": "2"
+    },
+    {
+      "data": "100 FR SCY",
+      "text": "100 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 3,
+      "text": "3"
+    },
+    {
+      "data": "200 FR SCY",
+      "text": "200 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 4,
+      "text": "4"
+    },
+    {
+      "data": "500 FR SCY",
+      "text": "500 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 5,
+      "text": "5"
+    },
+    {
+      "data": "1000 FR SCY",
+      "text": "1000 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 6,
+      "text": "6"
+    },
+    {
+      "data": "1650 FR SCY",
+      "text": "1650 FR SCY"
+    }
+  ],
+  [
+    {
+      "data": 11,
+      "text": "11"
+    },
+    {
+      "data": "50 BK SCY",
+      "text": "50 BK SCY"
+    }
+  ],
+  [
+    {
+      "data": 12,
+      "text": "12"
+    },
+    {
+      "data": "100 BK SCY",
+      "text": "100 BK SCY"
+    }
+  ],
+  [
+    {
+      "data": 13,
+      "text": "13"
+    },
+    {
+      "data": "200 BK SCY",
+      "text": "200 BK SCY"
+    }
+  ],
+  [
+    {
+      "data": 14,
+      "text": "14"
+    },
+    {
+      "data": "50 BR SCY",
+      "text": "50 BR SCY"
+    }
+  ],
+  [
+    {
+      "data": 15,
+      "text": "15"
+    },
+    {
+      "data": "100 BR SCY",
+      "text": "100 BR SCY"
+    }
+  ],
+  [
+    {
+      "data": 16,
+      "text": "16"
+    },
+    {
+      "data": "200 BR SCY",
+      "text": "200 BR SCY"
+    }
+  ],
+  [
+    {
+      "data": 17,
+      "text": "17"
+    },
+    {
+      "data": "50 FL SCY",
+      "text": "50 FL SCY"
+    }
+  ],
+  [
+    {
+      "data": 18,
+      "text": "18"
+    },
+    {
+      "data": "100 FL SCY",
+      "text": "100 FL SCY"
+    }
+  ],
+  [
+    {
+      "data": 19,
+      "text": "19"
+    },
+    {
+      "data": "200 FL SCY",
+      "text": "200 FL SCY"
+    }
+  ],
+  [
+    {
+      "data": 20,
+      "text": "20"
+    },
+    {
+      "data": "100 IM SCY",
+      "text": "100 IM SCY"
+    }
+  ],
+  [
+    {
+      "data": 21,
+      "text": "21"
+    },
+    {
+      "data": "200 IM SCY",
+      "text": "200 IM SCY"
+    }
+  ],
+  [
+    {
+      "data": 22,
+      "text": "22"
+    },
+    {
+      "data": "400 IM SCY",
+      "text": "400 IM SCY"
+    }
+  ],
+  [
+    {
+      "data": 23,
+      "text": "23"
+    },
+    {
+      "data": "200 FR-R SCY",
+      "text": "200 FR-R SCY"
+    }
+  ],
+  [
+    {
+      "data": 24,
+      "text": "24"
+    },
+    {
+      "data": "400 FR-R SCY",
+      "text": "400 FR-R SCY"
+    }
+  ],
+  [
+    {
+      "data": 25,
+      "text": "25"
+    },
+    {
+      "data": "800 FR-R SCY",
+      "text": "800 FR-R SCY"
+    }
+  ],
+  [
+    {
+      "data": 26,
+      "text": "26"
+    },
+    {
+      "data": "200 MED-R SCY",
+      "text": "200 MED-R SCY"
+    }
+  ],
+  [
+    {
+      "data": 27,
+      "text": "27"
+    },
+    {
+      "data": "400 MED-R SCY",
+      "text": "400 MED-R SCY"
+    }
+  ]
+]
