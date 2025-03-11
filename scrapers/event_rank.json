@@ -1,179 +1,185 @@
 {
   "metadata": [
-    {
-      "jaql": {
-        "title": "Name",
-        "dim": "[NcaaSwimTime.FullName]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "Year",
-        "dim": "[NcaaSwimTime.EligibilityYear]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SwimTime",
-        "dim": "[NcaaSwimTime.SwimTimeFormatted]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SwimTimeAdj",
-        "dim": "[NcaaSwimTime.SwimTimeAdjFormatted]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "Event",
-        "dim": "[SwimEvent.EventCode]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "Team",
-        "dim": "[OrgUnit.TeamName]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "Meet",
-        "dim": "[Meet.MeetName]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SwimDate",
-        "dim": "[SeasonCalendar.CalendarDate (Calendar)]",
-        "datatype": "datetime",
-        "level": "days"
-      },
-      "format": {
-        "mask": {
-          "days": "M/d/yyyy"
-        }
-      }
-    },
-    {
-      "jaql": {
-        "title": "TimeStandard",
-        "dim": "[TimeStandard.TimeStandardName]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SwimEventKey",
-        "dim": "[NcaaSwimTime.SwimEventKey]",
-        "datatype": "numeric"
-      }
-    },
-    {
-      "jaql": {
-        "title": "EventCompetitionCategoryKey",
-        "dim": "[NcaaSwimTime.EventCompetitionCategoryKey]",
-        "datatype": "numeric"
-      }
-    },
-    {
-      "jaql": {
-        "title": "NCAASeason",
-        "dim": "[SeasonCalendar.NCAASeason]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SwimTimeSeconds",
-        "dim": "[NcaaSwimTime.SwimTimeSeconds]",
-        "datatype": "numeric"
-      }
-    },
-    {
-      "jaql": {
-        "title": "PersonKey",
-        "dim": "[NcaaSwimTime.PersonKey]",
-        "datatype": "numeric"
-      }
-    },
-    {
-      "jaql": {
-        "title": "ConferenceName",
-        "dim": "[OrgUnit.ConferenceName]",
-        "datatype": "text"
-      }
-    },
-    {
-      "jaql": {
-        "title": "SortKey",
-        "dim": "[NcaaSwimTime.SortKey]",
-        "datatype": "text",
-        "sort": "asc"
-      }
-    },
-    {
-      "jaql": {
-        "title": "Rank",
-        "formula": "RANK(min([C2A1A-9AA]),\"ASC\",\"1224\", [7BAEA-79D],[339F5-77E],[024F1-F1B])",
-        "context": {
-          "[339F5-77E]": {
-            "title": "EventCompetitionCategoryKey",
-            "dim": "[NcaaSwimTime.EventCompetitionCategoryKey]",
-            "datatype": "numeric"
-          },
-          "[C2A1A-9AA]": {
-            "title": "SwimTimeSeconds",
-            "dim": "[NcaaSwimTime.SwimTimeSeconds]",
-            "datatype": "numeric"
-          },
-          "[7BAEA-79D]": {
-            "title": "SwimEventKey",
-            "dim": "[NcaaSwimTime.SwimEventKey]",
-            "datatype": "numeric"
-          },
-          "[024F1-F1B]": {
-            "title": "NCAASeason",
-            "dim": "[SeasonCalendar.NCAASeason]",
-            "datatype": "text"
+      {
+          "jaql": {
+              "title": "Swim Time",
+              "dim": "[BestTimes.SwimTimeFormatted]",
+              "datatype": "text"
           }
-        }
+      },
+      {
+          "jaql": {
+              "title": "Name",
+              "dim": "[Person.FullName]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Foreign",
+              "dim": "[Person.IsForeign]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Age",
+              "dim": "[BestTimes.AgeAtMeetKey]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Event",
+              "dim": "[SwimEvent.EventCode]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "LSC",
+              "dim": "[OrgUnit.Level3Code]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Team",
+              "dim": "[OrgUnit.Level4Name]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Meet",
+              "dim": "[Meet.MeetName]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Time Standard",
+              "dim": "[TimeStandard.TimeStandardName]",
+              "datatype": "text"
+          }
+      },
+      {
+          "jaql": {
+              "title": "SwimEventKey",
+              "dim": "[BestTimes.SwimEventKey]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "EventCompetitionCategoryKey",
+              "dim": "[BestTimes.EventCompetitionCategoryKey]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "PersonKey",
+              "dim": "[BestTimes.PersonKey]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "SortKey",
+              "dim": "[BestTimes.SortKey]",
+              "datatype": "text",
+              "sort": "asc"
+          }
+      },
+      {
+          "jaql": {
+              "title": "UsasSwimTimeKey",
+              "dim": "[BestTimes.UsasSwimTimeKey]",
+              "datatype": "numeric"
+          }
+      },
+      {
+          "jaql": {
+              "title": "Rank",
+              "formula": "RANK(min([1F56B-138]),\"ASC\",\"1224\", [53C55-010],[B35E6-B52])",
+              "context": {
+                  "[B35E6-B52]": {
+                      "title": "EventCompetitionCategoryKey",
+                      "dim": "[BestTimes.EventCompetitionCategoryKey]",
+                      "datatype": "numeric"
+                  },
+                  "[1F56B-138]": {
+                      "title": "SwimTimeSeconds",
+                      "dim": "[BestTimes.SwimTimeSeconds]",
+                      "datatype": "numeric"
+                  },
+                  "[53C55-010]": {
+                      "title": "SwimEventKey",
+                      "dim": "[BestTimes.SwimEventKey]",
+                      "datatype": "numeric"
+                  }
+              }
+          }
+      },
+      {
+          "jaql": {
+              "title": "SeasonYearDesc",
+              "dim": "[SeasonCalendar.SeasonYearDesc]",
+              "datatype": "text",
+              "filter": {
+                  "members": [
+                      "2025 (9/1/2024 - 8/31/2025)"
+                  ]
+              }
+          },
+          "panel": "scope"
+      },
+      {
+          "jaql": {
+              "title": "StandardType",
+              "dim": "[StandardType.StandardType]",
+              "datatype": "text",
+              "filter": {
+                  "members": [
+                      "Slower Than B"
+                  ]
+              }
+          },
+          "panel": "scope"
+      },
+      {
+          "jaql": {
+              "title": "Level2Code",
+              "dim": "[OrgUnit.Level2Code]",
+              "datatype": "text",
+              "filter": {
+                  "members": [
+                      "Central"
+                  ]
+              }
+          },
+          "panel": "scope"
+      },
+      {
+          "jaql": {
+              "title": "Level3Name",
+              "dim": "[OrgUnit.Level3Name]",
+              "datatype": "text",
+              "filter": {
+                  "members": [
+                      "Illinois Swimming"
+                  ]
+              }
+          },
+          "panel": "scope"
       }
-    },
-    {
-      "jaql": {
-        "title": "StandardType",
-        "dim": "[StandardType.StandardType]",
-        "datatype": "text",
-        "filter": {
-          "members": [
-            "NS"
-          ]
-        }
-      },
-      "panel": "scope"
-    },
-    {
-      "jaql": {
-        "title": "Ineligible",
-        "dim": "[NcaaSwimTime.Ineligible]",
-        "datatype": "text",
-        "filter": {
-          "equals": false
-        }
-      },
-      "panel": "scope"
-    }
   ],
-  "datasource": "NCAA Times",
+  "datasource": {
+      "title": "USA Swimming Times Elasticube",
+      "live": false
+  },
   "by": "ComposeSDK",
-  "queryGuid": "2a77fe1d-4f00-494c-be75-325382c711eb",
-  "count":500
+  "queryGuid": "6b6a3459-5b86-4797-9a2b-4fb61568fe04",
+  "count": 400
 }
